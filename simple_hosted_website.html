@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Hosted Website — Sample</title>
+  <meta name="description" content="A simple, single-file HTML website you can host on GitHub Pages, Netlify, Vercel or any static host." />
+  <style>
+    :root{--bg:#0f1720;--card:#0b1220;--muted:#94a3b8;--accent:#06b6d4}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:linear-gradient(180deg,#071127 0%,#081827 100%);color:#e6eef6;line-height:1.4}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700}
+    nav{display:flex;gap:14px}
+    nav a{color:var(--muted);text-decoration:none;padding:8px;border-radius:8px}
+    nav a:hover{color:white;background:rgba(255,255,255,0.02)}
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;margin-top:28px}
+    .card{background:rgba(255,255,255,0.02);padding:22px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    h1{margin:0 0 10px;font-size:28px}
+    p.lead{color:var(--muted);margin:0 0 18px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#7c3aed);color:#042028;text-decoration:none;font-weight:600}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .feature{background:rgba(255,255,255,0.01);padding:12px;border-radius:10px}
+    .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .thumb{height:120px;border-radius:8px;background:linear-gradient(180deg,#0b1b2a,#041122);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+    form{display:flex;flex-direction:column;gap:8px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    footer{margin-top:28px;padding:22px 0;color:var(--muted);font-size:14px;text-align:center}
+    /* responsive */
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.features,.portfolio{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:560px){.features,.portfolio{grid-template-columns:1fr};nav{display:none}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">MH</div>
+        <div>
+          <div style="font-weight:700">My Hosted Website</div>
+          <div style="font-size:12px;color:var(--muted)">Single-file HTML template</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card">
+          <h1>Simple, fast, and ready to host</h1>
+          <p class="lead">This single HTML file contains everything you need to publish a small portfolio or landing page. No build step required — upload <strong>index.html</strong> to your static host and you're live.</p>
+          <a class="btn" href="#contact">Get started</a>
+
+          <div class="features" id="features">
+            <div class="feature"><strong>Responsive</strong><div style="color:var(--muted);font-size:13px">Looks good on mobile and desktop</div></div>
+            <div class="feature"><strong>No backend</strong><div style="color:var(--muted);font-size:13px">Static — host on GitHub Pages, Netlify, Vercel</div></div>
+            <div class="feature"><strong>Customizable</strong><div style="color:var(--muted);font-size:13px">Edit text, images and colors in-place</div></div>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3 style="margin-top:0">Contact</h3>
+          <form id="contact" onsubmit="return handleForm(event)">
+            <input id="name" placeholder="Your name" required />
+            <input id="email" type="email" placeholder="Your email" required />
+            <textarea id="message" placeholder="Message" rows="4" required></textarea>
+            <button class="btn" type="submit">Send</button>
+            <div id="formResponse" style="color:var(--muted);font-size:13px;margin-top:8px"></div>
+          </form>
+        </aside>
+      </section>
+
+      <section class="card" style="margin-top:18px">
+        <h2 style="margin-top:0">Recent work</h2>
+        <div class="portfolio" id="work">
+          <div class="thumb">Project A</div>
+          <div class="thumb">Project B</div>
+          <div class="thumb">Project C</div>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:18px">
+        <h2 style="margin-top:0">How to host</h2>
+        <ol style="color:var(--muted);font-size:14px">
+          <li>Save this file as <code>index.html</code>.</li>
+          <li>Test locally: <code>python3 -m http.server 8000</code> then open <code>http://localhost:8000</code>.</li>
+          <li>Push to a new GitHub repo and enable GitHub Pages (branch: <code>main</code> or <code>gh-pages</code>).</li>
+          <li>Or drag-and-drop the <code>index.html</code> file into Netlify's Sites dashboard ("Sites > New site from Git").</li>
+          <li>Or deploy with Vercel by importing the repo — it will auto-detect a static site.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> My Hosted Website • Built with a single HTML file
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function handleForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const resp = document.getElementById('formResponse');
+      if(!name||!email||!message){resp.textContent='Please fill all fields.';return false}
+      // This demo is static — show a mailto link the user can click to send via their email client
+      const mailto = `mailto:you@example.com?subject=${encodeURIComponent('Message from '+name)}&body=${encodeURIComponent(message+'\n\nFrom: '+name+' <'+email+'>')}`;
+      resp.innerHTML = `This is a static demo. <a href="${mailto}" style="color:var(--accent);">Send via email client</a>`;
+      return false;
+    }
+  </script>
+</body>
+</html>
